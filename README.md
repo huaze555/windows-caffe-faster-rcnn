@@ -1,42 +1,87 @@
-This repository contains a C++ implementation under windows7, this version combine [Microsoft's windows-caffe](https://github.com/Microsoft/caffe) and [D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev) which runs under linux and c++. 
+### 介绍
+该windows下的c++版faster-rcnn是建立在两个版本基础之上的：
+一: [Microsoft's windows-caffe](https://github.com/Microsoft/caffe) 
+    这个版本是微软的windows下caffe版本
+二: [D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev) 
+    这个是D-X-Y大神linux下c++版faster-rcnn
+### 该版本特性
+结合以上两个后，这是在windows下的c++版faster-rcnn，无python，支持训练和测试。 
+在NVIDIA GTX1060显卡，用VGG16模型测试一张图片大约200ms
 
-This version can run(include train,test) under windows and absolute c++ environment,no python at all.
+## 编译
+跟配置[微软版caffe](https://github.com/Microsoft/caffe)一模一样，或者参考[博客](http://www.cnblogs.com/love6tao/p/5706830.html)
+这里为了方便，我已经把cudnn的文件放在工程里了，就是主目录下的cuda文件夹
+如果需要配置cudnn的话，记得在“.\windows\CommonSettings.props”中“CuDnnPath”的配置好cuda文件夹的路径
 
-Setup follows Microsoft's windows-caffe step: 
-## Windows Setup
-**Requirements**: Visual Studio 2013
-### Pre-Build Steps
-Copy `.\windows\CommonSettings.props.example` to `.\windows\CommonSettings.props`
+## 训练模型
+具体训练模型的步骤，跟[D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev)是一模一样的，
+但经过比较后，发现这个版本训练的速度比python版[py-faster-rcnn](https://github.com/rbgirshick/py-faster-rcnn)要慢一点点。
 
-By defaults Windows build requires `CUDA` and `cuDNN` libraries.
-Both can be disabled by adjusting build variables in `.\windows\CommonSettings.props`.
-3rd party dependencies required by Caffe are automatically resolved via NuGet.
+## 配置到VS2013
+编译完成后，生成的所有跟faster-rcnn的依赖项都在"<caffe_root>\Build\x64\Release\"下
+而第三方依赖库，比如OpenCV、Glog、protobuf等都在和<caffe_root>同目录下的"NugetPackages\"下
+就像VS2013配置OpenCV一样，配置faster-rcnn只要把faster-rcnn和第三方库的include文件放置到VS2013的VC++目录，lib文件放到库目录，然后链接器->输入->附加依赖项，填上
+libboost_date_time-vc120-mt-1_59.lib
+libboost_filesystem-vc120-mt-1_59.lib
+libboost_system-vc120-mt-1_59.lib
+libglog.lib
+libcaffe.lib
+gflags.lib
+gflags_nothreads.lib
+hdf5.lib
+hdf5_hl.lib
+libprotobuf.lib
+libopenblas.dll.a
+Shlwapi.lib
+opencv_core2410.lib
+opencv_highgui2410.lib
+opencv_imgproc2410.lib
+LevelDb.lib
+lmdb.lib
+opencv_video2410.lib
+opencv_objdetect2410.lib
+cublas.lib
+cuda.lib
+cublas_device.lib
+cudart.lib
+cudart_static.lib
+curand.lib
+kernel32.lib
+详细可参考博客: http://blog.csdn.net/auto1993/article/details/70198435
 
-### CUDA
-Download `CUDA Toolkit 7.5` [from nVidia website](https://developer.nvidia.com/cuda-toolkit).
-If you don't have CUDA installed, you can experiment with CPU_ONLY build.
-In `.\windows\CommonSettings.props` set `CpuOnlyBuild` to `true` and set `UseCuDNN` to `false`.
+因为第三方库比较多配置起来麻烦，为了方便，我将NugetPackages文件中第三方库文件打包好了，分为三个文件夹： bin、include、lib，分别对应可执行文件，头文件，库文件
+百度网盘: ，密码：
 
-### cuDNN
-The cudnn files are already in main fold,which rename the cuda,include the bin,lib,include 3 folders 
-Importantly, you must set `CuDnnPath` to point to this location in `.\windows\CommonSettings.props`.
-`CuDnnPath` defined in `.\windows\CommonSettings.props`.
-Also, you can disable cuDNN by setting `UseCuDNN` to `false` in the property file.
+## 对图片进行测试
+VS2013配置成功后，就可以在VS2013中编写代码，对图片进行测试了。 检测类在文件<affe-master>include\caffe\api\FRCNN\frcnn_api.hpp 定义，
+接口为：
+#include <caffe\api\FRCNN\frcnn_api.hpp>  //目标检测头文件
+#include <opencv2\opencv.hpp> 
+#include "Register.h"           //这个文件不能少，用于注册相关caffe层
+using namespace std;
+using namespace cv;
+using namespace caffe::Frcnn;
 
-#### Remark
-After you have built solution, in order to use it you have to:
-* add `<caffe_root>\Build\x64\Release` to your system path.
+int main(){
+	Mat frame = imread("1.jpg);  //图片
 
-## License and Citation
+	//初始化目标检测器，构造函数中，四个参数分别为
+	//1、网络配置文件
+	//2、训练好的检测model
+	//3、目标检测参数文件，比如目标检测阈值，NMS阈值
+	//4、是否开启GPU模型，默认为true，表示开启GPU，false表示用CPU
+	FRCNN_API::Detector detect("vgg_m_test.prototxt", "vgg_m.caffemodel", "config_file.json",true);
+    
+	vector<BBox<float> > boxes;  //检测结果保存在这
+	detect.predict(frame, boxes);    //对图片帧frame进行目标检测，保存的结果框，存在boxes中
 
-Caffe is released under the [BSD 2-Clause license](https://github.com/BVLC/caffe/blob/master/LICENSE).
-The BVLC reference models are released for unrestricted use.
+	for (int i = 0; i < boxes.size(); i++)   //画框
+		cv::rectangle(frame, cv::Point(boxes[i][0], boxes[i][1]), cv::Point(boxes[i][2], boxes[i][3]), Scalar(0, 0, 255));
+	imshow("", frame);
+	waitKey(1);
+	return 0;
+}
+效果
 
-Please cite Caffe in your publications if it helps your research:
 
-    @article{jia2014caffe,
-      Author = {Jia, Yangqing and Shelhamer, Evan and Donahue, Jeff and Karayev, Sergey and Long, Jonathan and Girshick, Ross and Guadarrama, Sergio and Darrell, Trevor},
-      Journal = {arXiv preprint arXiv:1408.5093},
-      Title = {Caffe: Convolutional Architecture for Fast Feature Embedding},
-      Year = {2014}
-    }
+
