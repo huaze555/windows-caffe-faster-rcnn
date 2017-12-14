@@ -11,8 +11,8 @@
 结合以上两个后，这是在windows下的c++版faster-rcnn，无python，支持训练和测试。   
 在NVIDIA GTX1060显卡，用VGG16模型测试一张图片大约200ms
 
-## 编译
-跟配置[微软版caffe](https://github.com/Microsoft/caffe)一模一样，或者参考[博客](http://www.cnblogs.com/love6tao/p/5706830.html)  
+## 编译（x64 release模式）
+跟配置[微软版caffe](https://github.com/Microsoft/caffe)一模一样，或者参考[博客](http://www.cnblogs.com/love6tao/p/5706830.html)  
 这里为了方便，我已经把cudnn的文件放在工程里了，就是主目录下的cuda文件夹  
 如果需要配置cudnn的话，记得在“.\windows\CommonSettings.props”中“CuDnnPath”的配置好cuda文件夹的路径
 
