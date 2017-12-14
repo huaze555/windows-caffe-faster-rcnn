@@ -83,9 +83,8 @@ int main(){
 }
 
 ## Register.h和config_file.json文件
-需要添加Register.h这个头文件，否则会报错说没有注册相关的layer，该文件我放在了工程主目录下
-config_file.json是训练以及测试时需要用到的配置文件，有涉及到目标类别数，NMS阈值等等，  
-在caffe-master\examples\FRCNN\config\下
+需要添加Register.h这个头文件，否则会报错说没有注册相关的layer，该文件我放在了工程主目录下  
+config_file.json是训练以及测试时需要用到的配置文件，有涉及到目标类别数，NMS阈值等等，在caffe-master\examples\FRCNN\config\下
 
 
 ## 其它
