@@ -1,10 +1,12 @@
-### 介绍
+## 介绍
 该windows下的c++版faster-rcnn是建立在两个版本基础之上的：
+
 一: [Microsoft's windows-caffe](https://github.com/Microsoft/caffe) 
     这个版本是微软的windows下caffe版本
 二: [D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev) 
     这个是D-X-Y大神linux下c++版faster-rcnn
-### 该版本特性
+    
+## 该版本特性
 结合以上两个后，这是在windows下的c++版faster-rcnn，无python，支持训练和测试。 
 在NVIDIA GTX1060显卡，用VGG16模型测试一张图片大约200ms
 
@@ -81,7 +83,5 @@ int main(){
 	waitKey(1);
 	return 0;
 }
-效果
-
 
 
