@@ -1,4 +1,4 @@
-![image](http://github.com/huaze555/windows-caffe-faster-rcnn/raw/master/1.jpg)
+![image](https://github.com/huaze555/windows-caffe-faster-rcnn/raw/master/1.jpg)
 ## 介绍
 该windows下的c++版faster-rcnn是建立在两个版本基础之上的：
 
