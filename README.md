@@ -54,7 +54,7 @@ kernel32.lib
 
 详细可参考博客: http://blog.csdn.net/auto1993/article/details/70198435  
 
-因为第三方库比较多配置起来麻烦，为了方便，我将NugetPackages文件中第三方库文件打包好了放在百度网盘上，密码:   
+因为第三方库比较多配置起来麻烦，为了方便，我将NugetPackages文件中第三方库文件打包好了放在[百度网盘](https://pan.baidu.com/s/1gfjc3n1)上，密码: eotf   
 共分为三个文件夹： bin、include、lib，分别对应可执行文件，头文件，库文件
 
 ## 对图片进行测试
