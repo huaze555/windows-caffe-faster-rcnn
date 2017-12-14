@@ -7,12 +7,12 @@
     这个是D-X-Y大神linux下c++版faster-rcnn
     
 ## 该版本特性
-结合以上两个后，这是在windows下的c++版faster-rcnn，无python，支持训练和测试。 
+结合以上两个后，这是在windows下的c++版faster-rcnn，无python，支持训练和测试。   
 在NVIDIA GTX1060显卡，用VGG16模型测试一张图片大约200ms
 
 ## 编译
-跟配置[微软版caffe](https://github.com/Microsoft/caffe)一模一样，或者参考[博客](http://www.cnblogs.com/love6tao/p/5706830.html)
-这里为了方便，我已经把cudnn的文件放在工程里了，就是主目录下的cuda文件夹
+跟配置[微软版caffe](https://github.com/Microsoft/caffe)一模一样，或者参考[博客](http://www.cnblogs.com/love6tao/p/5706830.html)  
+这里为了方便，我已经把cudnn的文件放在工程里了，就是主目录下的cuda文件夹  
 如果需要配置cudnn的话，记得在“.\windows\CommonSettings.props”中“CuDnnPath”的配置好cuda文件夹的路径
 
 ## 训练模型
@@ -20,8 +20,8 @@
 但经过比较后，发现这个版本训练的速度比python版[py-faster-rcnn](https://github.com/rbgirshick/py-faster-rcnn)要慢一点点。
 
 ## 配置到VS2013
-编译完成后，生成的所有跟faster-rcnn的依赖项都在"caffe-master\Build\x64\Release\"下
-而第三方依赖库，比如OpenCV、Glog、protobuf等都在和caffe-master同目录下的"NugetPackages\"下
+编译完成后，生成的所有跟faster-rcnn的依赖项都在"caffe-master\Build\x64\Release\"下  
+而第三方依赖库，比如OpenCV、Glog、protobuf等都在和caffe-master同目录下的"NugetPackages\"下  
 就像VS2013配置OpenCV一样，配置faster-rcnn只要把faster-rcnn和第三方库的include文件放置到VS2013的VC++目录，lib文件放到库目录，然后链接器->输入->附加依赖项，填上
 
 libboost_date_time-vc120-mt-1_59.lib  
@@ -53,8 +53,8 @@ kernel32.lib
 
 详细可参考博客: http://blog.csdn.net/auto1993/article/details/70198435  
 
-因为第三方库比较多配置起来麻烦，为了方便，我将NugetPackages文件中第三方库文件打包好了，分为三个文件夹： bin、include、lib，分别对应可执行文件，头文件，库文件  
-百度网盘: ，密码：
+因为第三方库比较多配置起来麻烦，为了方便，我将NugetPackages文件中第三方库文件打包好了放在百度网盘上，密码:   
+共分为三个文件夹： bin、include、lib，分别对应可执行文件，头文件，库文件
 
 ## 对图片进行测试
 VS2013配置成功后，就可以在VS2013中编写代码，对图片进行测试了。 检测类在文件caffe-master\include\caffe\api\FRCNN\frcnn_api.hpp 定义，
