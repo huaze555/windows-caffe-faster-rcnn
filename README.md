@@ -16,7 +16,7 @@
 如果需要配置cudnn的话，记得在“.\windows\CommonSettings.props”中“CuDnnPath”的配置好cuda文件夹的路径
 
 ## 训练模型
-具体训练模型的步骤，跟[D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev)是一模一样的，
+具体训练模型的步骤，跟[D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev)是一模一样的  
 但经过比较后，发现这个版本训练的速度比python版[py-faster-rcnn](https://github.com/rbgirshick/py-faster-rcnn)要慢一点点。
 
 ## 配置到VS2013
@@ -67,17 +67,14 @@ using namespace cv;
 using namespace caffe::Frcnn;  
 int main(){  
         Mat frame = imread("1.jpg);  //图片
-
 	//初始化目标检测器，构造函数中，四个参数分别为
 	//1、网络配置文件
 	//2、训练好的检测model
 	//3、目标检测参数文件，比如目标检测阈值，NMS阈值
 	//4、是否开启GPU模型，默认为true，表示开启GPU，false表示用CPU
 	FRCNN_API::Detector detect("vgg_m_test.prototxt", "vgg_m.caffemodel", "config_file.json",true);
-    
 	vector<BBox<float> > boxes;  //检测结果保存在这
 	detect.predict(frame, boxes);    //对图片帧frame进行目标检测，保存的结果框，存在boxes中
-
 	for (int i = 0; i < boxes.size(); i++)   //画框
 		cv::rectangle(frame, cv::Point(boxes[i][0], boxes[i][1]), cv::Point(boxes[i][2], boxes[i][3]), Scalar(0, 0, 255));
 	imshow("", frame);
