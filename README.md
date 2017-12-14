@@ -26,11 +26,8 @@
 就像VS2013配置OpenCV一样，配置faster-rcnn只要把faster-rcnn和第三方库的include文件放置到VS2013的VC++目录，lib文件放到库目录，然后链接器->输入->附加依赖项，填上
 
 libboost_date_time-vc120-mt-1_59.lib
-
 libboost_filesystem-vc120-mt-1_59.lib
-
 libboost_system-vc120-mt-1_59.lib
-
 libglog.lib
 
 libcaffe.lib
