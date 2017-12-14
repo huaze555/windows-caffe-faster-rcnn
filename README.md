@@ -20,8 +20,8 @@
 但经过比较后，发现这个版本训练的速度比python版[py-faster-rcnn](https://github.com/rbgirshick/py-faster-rcnn)要慢一点点。
 
 ## 配置到VS2013
-编译完成后，生成的所有跟faster-rcnn的依赖项都在"<caffe_root>\Build\x64\Release\"下
-而第三方依赖库，比如OpenCV、Glog、protobuf等都在和<caffe_root>同目录下的"NugetPackages\"下
+编译完成后，生成的所有跟faster-rcnn的依赖项都在"caffe-master\Build\x64\Release\"下
+而第三方依赖库，比如OpenCV、Glog、protobuf等都在和caffe-master同目录下的"NugetPackages\"下
 就像VS2013配置OpenCV一样，配置faster-rcnn只要把faster-rcnn和第三方库的include文件放置到VS2013的VC++目录，lib文件放到库目录，然后链接器->输入->附加依赖项，填上
 
 libboost_date_time-vc120-mt-1_59.lib  
@@ -57,7 +57,7 @@ kernel32.lib
 百度网盘: ，密码：
 
 ## 对图片进行测试
-VS2013配置成功后，就可以在VS2013中编写代码，对图片进行测试了。 检测类在文件<affe-master>include\caffe\api\FRCNN\frcnn_api.hpp 定义，
+VS2013配置成功后，就可以在VS2013中编写代码，对图片进行测试了。 检测类在文件caffe-master\include\caffe\api\FRCNN\frcnn_api.hpp 定义，
 接口为：  
 #include <caffe\api\FRCNN\frcnn_api.hpp>  //目标检测头文件  
 #include <opencv2\opencv.hpp>   
@@ -65,8 +65,8 @@ VS2013配置成功后，就可以在VS2013中编写代码，对图片进行测�
 using namespace std;  
 using namespace cv;  
 using namespace caffe::Frcnn;  
-int main(){
-	Mat frame = imread("1.jpg);  //图片
+int main(){  
+        Mat frame = imread("1.jpg);  //图片
 
 	//初始化目标检测器，构造函数中，四个参数分别为
 	//1、网络配置文件
@@ -85,4 +85,13 @@ int main(){
 	return 0;
 }
 
+## Register.h和config_file.json文件
+需要添加Register.h这个头文件，否则会报错说没有注册相关的layer，该文件我放在了工程主目录下
+config_file.json是训练以及测试时需要用到的配置文件，有涉及到目标类别数，NMS阈值等等，  
+在caffe-master\examples\FRCNN\config\下
+
+
+## 其它
+我的csdn博客地址：http://blog.csdn.net/zxj942405301/article/details/78602671
+如果该版本对你有帮助，希望你给我个星星，谢谢~
 
