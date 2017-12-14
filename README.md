@@ -2,8 +2,7 @@
 该windows下的c++版faster-rcnn是建立在两个版本基础之上的：
 
 一: [Microsoft's windows-caffe](https://github.com/Microsoft/caffe) 
-    这个版本是微软的windows下caffe版本
-    
+    这个版本是微软的windows下caffe版本    
 二: [D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev) 
     这个是D-X-Y大神linux下c++版faster-rcnn
     
@@ -25,13 +24,11 @@
 而第三方依赖库，比如OpenCV、Glog、protobuf等都在和<caffe_root>同目录下的"NugetPackages\"下
 就像VS2013配置OpenCV一样，配置faster-rcnn只要把faster-rcnn和第三方库的include文件放置到VS2013的VC++目录，lib文件放到库目录，然后链接器->输入->附加依赖项，填上
 
-libboost_date_time-vc120-mt-1_59.lib
+libboost_date_time-vc120-mt-1_59.lib  
 libboost_filesystem-vc120-mt-1_59.lib
-libboost_system-vc120-mt-1_59.lib
-libglog.lib
-
-libcaffe.lib
-
+ibboost_system-vc120-mt-1_59.lib
+libglog.lib  
+libcaffe.lib  
 gflags.lib
 
 gflags_nothreads.lib
