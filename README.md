@@ -1,4 +1,4 @@
-This repository contains a C++ implementation under windows7, this version combine Microsoft's windows-caffe and D-X-Y's caffe-faster-rcnn version which runs under linux and c++. 
+This repository contains a C++ implementation under windows7, this version combine [Microsoft's windows-caffe](https://github.com/Microsoft/caffe) and [D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev) which runs under linux and c++. 
 
 This version can run(include train,test) under windows and absolute c++ environment,no python at all.
 
@@ -18,15 +18,13 @@ If you don't have CUDA installed, you can experiment with CPU_ONLY build.
 In `.\windows\CommonSettings.props` set `CpuOnlyBuild` to `true` and set `UseCuDNN` to `false`.
 
 ### cuDNN
-Download `cuDNN v4` or `cuDNN v5` [from nVidia website](https://developer.nvidia.com/cudnn).
-Unpack downloaded zip to %CUDA_PATH% (environment variable set by CUDA installer).
-Alternatively, you can unpack zip to any location and set `CuDnnPath` to point to this location in `.\windows\CommonSettings.props`.
+The cudnn files are already in main fold,which rename the cuda,include the bin,lib,include 3 folders 
+Importantly, you must set `CuDnnPath` to point to this location in `.\windows\CommonSettings.props`.
 `CuDnnPath` defined in `.\windows\CommonSettings.props`.
 Also, you can disable cuDNN by setting `UseCuDNN` to `false` in the property file.
 
 #### Remark
-After you have built solution with Matlab support, in order to use it you have to:
-* add the generated `matcaffe` folder to Matlab search path, and
+After you have built solution, in order to use it you have to:
 * add `<caffe_root>\Build\x64\Release` to your system path.
 
 ## License and Citation
