@@ -26,31 +26,57 @@
 就像VS2013配置OpenCV一样，配置faster-rcnn只要把faster-rcnn和第三方库的include文件放置到VS2013的VC++目录，lib文件放到库目录，然后链接器->输入->附加依赖项，填上
 
 libboost_date_time-vc120-mt-1_59.lib
+
 libboost_filesystem-vc120-mt-1_59.lib
+
 libboost_system-vc120-mt-1_59.lib
+
 libglog.lib
+
 libcaffe.lib
+
 gflags.lib
+
 gflags_nothreads.lib
+
 hdf5.lib
+
 hdf5_hl.lib
+
 libprotobuf.lib
+
 libopenblas.dll.a
+
 Shlwapi.lib
+
 opencv_core2410.lib
+
 opencv_highgui2410.lib
+
 opencv_imgproc2410.lib
+
 LevelDb.lib
+
 lmdb.lib
+
 opencv_video2410.lib
+
 opencv_objdetect2410.lib
+
 cublas.lib
+
 cuda.lib
+
 cublas_device.lib
+
 cudart.lib
+
 cudart_static.lib
+
 curand.lib
+
 kernel32.lib
+
 详细可参考博客: http://blog.csdn.net/auto1993/article/details/70198435
 
 因为第三方库比较多配置起来麻烦，为了方便，我将NugetPackages文件中第三方库文件打包好了，分为三个文件夹： bin、include、lib，分别对应可执行文件，头文件，库文件
@@ -61,10 +87,14 @@ VS2013配置成功后，就可以在VS2013中编写代码，对图片进行测�
 接口为：
 
 #include <caffe\api\FRCNN\frcnn_api.hpp>  //目标检测头文件
+
 #include <opencv2\opencv.hpp> 
+
 #include "Register.h"           //这个文件不能少，用于注册相关caffe层
+
 using namespace std;
 using namespace cv;
+
 using namespace caffe::Frcnn;
 
 int main(){
