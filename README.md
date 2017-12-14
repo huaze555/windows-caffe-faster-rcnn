@@ -66,12 +66,12 @@ using namespace std;
 using namespace cv;  
 using namespace caffe::Frcnn;  
 int main(){  
-        Mat frame = imread("1.jpg);  //图片  
-	//初始化目标检测器，构造函数中，四个参数分别为  
-	//1、网络配置文件  
-	//2、训练好的检测model  
-	//3、目标检测参数文件，比如目标检测阈值，NMS阈值  
-	//4、是否开启GPU模型，默认为true，表示开启GPU，false表示用CPU  
+ 	Mat frame = imread("1.jpg);  //图片  
+		//初始化目标检测器，构造函数中，四个参数分别为  
+		//1、网络配置文件  
+		//2、训练好的检测model  
+		//3、目标检测参数文件，比如目标检测阈值，NMS阈值  
+		//4、是否开启GPU模型，默认为true，表示开启GPU，false表示用CPU  
 	FRCNN_API::Detector detect("vgg_m_test.prototxt", "vgg_m.caffemodel", "config_file.json",true);  
 	vector<BBox<float> > boxes;  //检测结果保存在这  
 	detect.predict(frame, boxes);    //对图片帧frame进行目标检测，保存的结果框，存在boxes中  
