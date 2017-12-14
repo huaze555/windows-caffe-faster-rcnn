@@ -3,6 +3,7 @@
 
 一: [Microsoft's windows-caffe](https://github.com/Microsoft/caffe) 
     这个版本是微软的windows下caffe版本
+    
 二: [D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev) 
     这个是D-X-Y大神linux下c++版faster-rcnn
     
@@ -23,6 +24,7 @@
 编译完成后，生成的所有跟faster-rcnn的依赖项都在"<caffe_root>\Build\x64\Release\"下
 而第三方依赖库，比如OpenCV、Glog、protobuf等都在和<caffe_root>同目录下的"NugetPackages\"下
 就像VS2013配置OpenCV一样，配置faster-rcnn只要把faster-rcnn和第三方库的include文件放置到VS2013的VC++目录，lib文件放到库目录，然后链接器->输入->附加依赖项，填上
+
 libboost_date_time-vc120-mt-1_59.lib
 libboost_filesystem-vc120-mt-1_59.lib
 libboost_system-vc120-mt-1_59.lib
@@ -57,6 +59,7 @@ kernel32.lib
 ## 对图片进行测试
 VS2013配置成功后，就可以在VS2013中编写代码，对图片进行测试了。 检测类在文件<affe-master>include\caffe\api\FRCNN\frcnn_api.hpp 定义，
 接口为：
+
 #include <caffe\api\FRCNN\frcnn_api.hpp>  //目标检测头文件
 #include <opencv2\opencv.hpp> 
 #include "Register.h"           //这个文件不能少，用于注册相关caffe层
