@@ -73,7 +73,7 @@ int main(){
 				//2、训练好的检测model  
 				//3、目标检测参数文件，比如目标检测阈值，NMS阈值  
 				//4、是否开启GPU模型，默认为true，表示开启GPU，false表示用CPU  
-	FRCNN_API::Detector detect("vgg_m_test.prototxt", "vgg_m.caffemodel", "config_file.json",true);  
+      	FRCNN_API::Detector detect("VGG16.prototxt", "VGG16.caffemodel", "config_file.json",true); 		 
 	vector<BBox<float> > boxes;  //检测结果保存在这  
 	detect.predict(frame, boxes);    //对图片帧frame进行目标检测，保存的结果框，存在boxes中  
 	for (int i = 0; i < boxes.size(); i++)   //画框  
@@ -83,9 +83,11 @@ int main(){
 	return 0;  
 }
 
-## Register.h和config_file.json文件
+## Register.h、VGG16.prototxt、VGG16.caffemodel、config_file.json文件
 需要添加Register.h这个头文件，否则会报错说没有注册相关的layer，该文件我放在了工程主目录下  
-config_file.json是训练以及测试时需要用到的配置文件，有涉及到目标类别数，NMS阈值等等，在caffe-master\examples\FRCNN\config\下
+VGG16.prototxt 文件是网络描述文件  在 caffe-master\models\FRCNN\vgg16\ 下  
+VGG16.caffemodel文件是训练好的model
+config_file.json是训练以及测试时需要用到的配置文件，有涉及到目标类别数，NMS阈值等等，在caffe-master\examples\FRCNN\config\下  
 
 
 ## 其它
