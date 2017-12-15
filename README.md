@@ -60,8 +60,10 @@ kernel32.lib
 共分为三个文件夹： bin、include、lib，分别对应可执行文件，头文件，库文件
 
 ## 对图片进行测试
-VS2013配置成功后，就可以在VS2013中编写代码，对图片进行测试了。 检测类在文件caffe-master\include\caffe\api\FRCNN\frcnn_api.hpp 定义，
-接口为：  
+VS2013配置成功后，就可以在VS2013中编写代码，对图片进行测试了。  
+检测类在文件caffe-master\include\caffe\api\FRCNN\frcnn_api.hpp 定义，接口为：  
+  
+  
 #include <caffe\api\FRCNN\frcnn_api.hpp>  //目标检测头文件  
 #include <opencv2\opencv.hpp>   
 #include "Register.h"           //这个文件不能少，用于注册相关caffe层  
