@@ -185,7 +185,7 @@ void FrcnnProposalLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype> *> &top,
 }
 
 #ifdef CPU_ONLY
-STUB_GPU(FrcnnProposalLayer);
+//STUB_GPU(FrcnnProposalLayer);
 #endif
 
 INSTANTIATE_CLASS(FrcnnProposalLayer);
