@@ -21,6 +21,10 @@
 ## 训练模型
 具体训练模型的步骤，跟[D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev)是一模一样的  
 但经过比较后，发现这个版本训练的速度比python版[py-faster-rcnn](https://github.com/rbgirshick/py-faster-rcnn)要慢一点点，所以方便的话，还是直接在py版下训练模型。
+具体可参考脚本 caffe-windows\examples\FRCNN\vgg16\train_frcnn.bat
+
+## 测试模型，计算mAP和Recall
+参考脚本 caffe-windows\examples\FRCNN\vgg16\test_frcnn.bat  
 
 ## 配置到VS2013
 编译完成后，生成的所有跟faster-rcnn的依赖项都在"caffe-master\Build\x64\Release\"下  
