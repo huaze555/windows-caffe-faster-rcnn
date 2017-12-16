@@ -3,10 +3,10 @@
 ### 如果由于工程需要使用c++的faster-rcnn，同时需要在windows环境下，那么这个版本适合你。  
 
 ## 介绍
-该windows下的c++版faster-rcnn是建立在两个版本基础之上的：
-一: [Microsoft's windows-caffe](https://github.com/Microsoft/caffe) 
-    这个版本是微软的windows下caffe版本    
-二: [D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev) 
+该windows下的c++版faster-rcnn是建立在两个版本基础之上的：  
+### 一: [Microsoft's windows-caffe](https://github.com/Microsoft/caffe) 
+    这个版本是微软的windows下caffe版本    
+### 二: [D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev) 
     这个是D-X-Y大神linux下c++版faster-rcnn
     
 ## 该版本特性
