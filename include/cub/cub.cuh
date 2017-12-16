@@ -61,7 +61,7 @@
 #include "grid/grid_queue.cuh"
 
 // Host
-#include "host/spinlock.cuh"
+//#include "host/spinlock.cuh"
 
 // Thread
 #include "thread/thread_load.cuh"
@@ -85,11 +85,11 @@
 #include "iterator/transform_input_iterator.cuh"
 
 // Util
-#include "util_allocator.cuh"
-#include "util_arch.cuh"
-#include "util_debug.cuh"
-#include "util_device.cuh"
-#include "util_macro.cuh"
-#include "util_ptx.cuh"
-#include "util_type.cuh"
+//#include "util_allocator.cuh"
+//#include "util_arch.cuh"
+//#include "util_debug.cuh"
+//#include "util_device.cuh"
+//#include "util_macro.cuh"
+//#include "util_ptx.cuh"
+//#include "util_type.cuh"
 

@@ -326,6 +326,7 @@
     <ClInclude Include="..\..\include\caffe\util\rng.hpp" />
     <ClInclude Include="..\..\include\caffe\util\signal_handler.h" />
     <ClInclude Include="..\..\include\caffe\util\upgrade_proto.hpp" />
+    <ClInclude Include="..\..\include\cub\cub.cuh" />
   </ItemGroup>
   <ItemGroup Condition="'$(CpuOnlyBuild)'=='false'">
     <CudaCompile Include="..\..\src\caffe\layers\absval_layer.cu" />
@@ -393,6 +394,7 @@
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="..\..\src\caffe\FRCNN\frcnn_anchor_target_layer.cu" />
+    <CudaCompile Include="..\..\src\caffe\FRCNN\frcnn_proposal_layer.cu" />
     <CudaCompile Include="..\..\src\caffe\FRCNN\frcnn_proposal_target_layer.cu" />
     <CudaCompile Include="..\..\src\caffe\FRCNN\frcnn_roi_data_layer.cu" />
     <CudaCompile Include="..\..\src\caffe\FRCNN\frcnn_vid_data_layer.cu" />

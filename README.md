@@ -1,4 +1,4 @@
-![image](https://github.com/huaze555/windows-caffe-faster-rcnn/raw/master/1.jpg)  
+![image](https://github.com/huaze555/windows-caffe-faster-rcnn/raw/master/demo_image/1.jpg)  
 
 ### 如果由于工程需要使用c++的faster-rcnn，同时需要在windows环境下，那么这个版本适合你。  
 

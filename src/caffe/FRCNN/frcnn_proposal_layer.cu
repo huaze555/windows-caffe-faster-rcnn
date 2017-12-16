@@ -4,7 +4,7 @@
 // Licensed under The MIT License [see fast-rcnn/LICENSE for details]
 // Written by Ross Girshick
 // ------------------------------------------------------------------
-#include <cub/cub.cuh>
+#include <cub/cub.cuh>   //comment Util and Host     written by zxj 2017-12-16
 #include <iomanip>
 
 #include "caffe/FRCNN/frcnn_proposal_layer.hpp"
@@ -113,9 +113,9 @@ __global__ void SelectBoxAftNMS(const int nthreads, const float *in_box, int *ke
 template <typename Dtype>
 void FrcnnProposalLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype> *> &bottom,
     const vector<Blob<Dtype> *> &top) {
-  Forward_cpu(bottom, top);
-  return ;
-#if 0
+  //Forward_cpu(bottom, top);
+  //return ;
+//#if 0
   DLOG(ERROR) << "========== enter proposal layer";
   const Dtype *bottom_rpn_score = bottom[0]->gpu_data();
   const Dtype *bottom_rpn_bbox = bottom[1]->gpu_data();
@@ -261,18 +261,14 @@ void FrcnnProposalLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype> *> &bottom,
   CUDA_CHECK(cudaFree(selected_indices_));
   if (bbox_score_!=NULL)  CUDA_CHECK(cudaFree(bbox_score_));
 
-#endif
+//#endif
 
 }
 
 template <typename Dtype>
 void FrcnnProposalLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype> *> &top,
     const vector<bool> &propagate_down, const vector<Blob<Dtype> *> &bottom) {
-  for (int i = 0; i < propagate_down.size(); ++i) {
-    if (propagate_down[i]) {
-      NOT_IMPLEMENTED;
-    }
-  }
+	Backward_cpu(top, propagate_down, bottom);
 }
 
 INSTANTIATE_LAYER_GPU_FUNCS(FrcnnProposalLayer);

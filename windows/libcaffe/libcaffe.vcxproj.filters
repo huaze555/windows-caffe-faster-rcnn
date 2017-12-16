@@ -64,6 +64,9 @@
     <Filter Include="src\FRCNN\util">
       <UniqueIdentifier>{19b12a8f-c0d6-4a33-aadb-2bccf3fb6cbd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\cub">
+      <UniqueIdentifier>{d88cef0a-c4c3-4167-b1f3-1cacc9c2fd4b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\caffe\util\im2col.cpp">
@@ -764,6 +767,9 @@
     <ClInclude Include="..\..\include\caffe\FRCNN\util\frcnn_gpu_nms.hpp">
       <Filter>include\FRCNN\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\cub\cub.cuh">
+      <Filter>include\cub</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="..\..\src\caffe\layers\psroi_pooling_layer.cu">
@@ -840,6 +846,7 @@
     <CudaCompile Include="..\..\src\caffe\FRCNN\roi_pooling_layer.cu" />
     <CudaCompile Include="..\..\src\caffe\FRCNN\smooth_L1_loss_layer.cu" />
     <CudaCompile Include="..\..\src\caffe\FRCNN\util\frcnn_nms_kernel.cu" />
+    <CudaCompile Include="..\..\src\caffe\FRCNN\frcnn_proposal_layer.cu" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
