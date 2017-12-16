@@ -1,0 +1,70 @@
+﻿生成启动时间为 2017/12/16 19:34:07。
+     1>项目“E:\github\windows-caffe-faster-rcnn\windows\test_frcnn\test_frcnn.vcxproj”在节点 2 上(Build 个目标)。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(357,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+     1>ClCompile:
+         E:\办公软件\VS2013\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /wd4661 /errorReport:prompt ..\..\examples\FRCNN\test_frcnn.cpp
+         test_frcnn.cpp
+     1>E:\caffe-windows\3rdParty\include\glog/logging.h(1158): warning C4251: “google::LogMessage::LogStream::streambuf_”: class“google::base_logging::LogStreamBuf”需要有 dll 接口由 class“google::LogMessage::LogStream”的客户端使用
+                 E:\caffe-windows\3rdParty\include\glog/logging.h(1088) : 参见“google::base_logging::LogStreamBuf”的声明
+     1>E:\caffe-windows\caffe-master\include\caffe/FRCNN/util/frcnn_utils.hpp(94): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+     1>E:\caffe-windows\caffe-master\include\caffe/FRCNN/util/frcnn_utils.hpp(95): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+     1>E:\caffe-windows\caffe-master\include\caffe/FRCNN/util/frcnn_utils.hpp(96): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+     1>E:\caffe-windows\caffe-master\include\caffe/FRCNN/util/frcnn_utils.hpp(97): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+     1>E:\caffe-windows\caffe-master\include\caffe/FRCNN/util/frcnn_utils.hpp(98): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+     1>..\..\examples\FRCNN\test_frcnn.cpp(26): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+     1>..\..\examples\FRCNN\test_frcnn.cpp(186): warning C4267: “初始化”: 从“size_t”转换到“const int”，可能丢失数据
+       Link:
+         E:\办公软件\VS2013\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\Build\x64\Release\test_frcnn.exe" /INCREMENTAL:NO /NOLOGO /WX:NO "libboost_date_time-vc120-mt-1_59.lib" "libboost_filesystem-vc120-mt-1_59.lib" "libboost_system-vc120-mt-1_59.lib" libglog.lib libcaffe.lib gflags.lib gflags_nothreads.lib hdf5.lib hdf5_hl.lib libprotobuf.lib libopenblas.dll.a Shlwapi.lib opencv_core2410.lib opencv_highgui2410.lib opencv_imgproc2410.lib LevelDb.lib lmdb.lib opencv_video2410.lib opencv_objdetect2410.lib cublas.lib cuda.lib cublas_device.lib cudart.lib cudart_static.lib curand.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"..\..\Build\x64\Release\test_frcnn.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\..\Build\x64\Release\test_frcnn.lib" /MACHINE:X64 x64\Release\test_frcnn.obj
+            正在创建库 ..\..\Build\x64\Release\test_frcnn.lib 和对象 ..\..\Build\x64\Release\test_frcnn.exp
+         正在生成代码
+         已完成代码的生成
+     1>libcaffe.lib(concat_layer.cu.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libcaffe.lib(concat_layer.cu.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libcaffe.lib(conv_layer.cu.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libcaffe.lib(conv_layer.cu.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libcaffe.lib(dropout_layer.cu.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libcaffe.lib(dropout_layer.cu.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libcaffe.lib(eltwise_layer.cu.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libcaffe.lib(eltwise_layer.cu.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libcaffe.lib(inner_product_layer.cu.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libcaffe.lib(inner_product_layer.cu.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libcaffe.lib(lrn_layer.cu.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libcaffe.lib(lrn_layer.cu.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libcaffe.lib(pooling_layer.cu.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libcaffe.lib(pooling_layer.cu.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libcaffe.lib(power_layer.cu.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libcaffe.lib(power_layer.cu.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libcaffe.lib(prelu_layer.cu.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libcaffe.lib(prelu_layer.cu.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libcaffe.lib(relu_layer.cu.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libcaffe.lib(relu_layer.cu.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libcaffe.lib(softmax_layer.cu.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libcaffe.lib(softmax_layer.cu.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libcaffe.lib(split_layer.cu.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libcaffe.lib(split_layer.cu.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libcaffe.lib(im2col.cu.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libcaffe.lib(im2col.cu.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libcaffe.lib(math_functions.cu.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libcaffe.lib(math_functions.cu.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libcaffe.lib(roi_pooling_layer.cu.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libcaffe.lib(roi_pooling_layer.cu.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(descriptor.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(descriptor.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(descriptor.pb.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(descriptor.pb.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(descriptor_database.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(descriptor_database.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(dynamic_message.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(dynamic_message.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(extension_set.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(extension_set.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(extension_set_heavy.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(extension_set_heavy.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(generated_message_reflection.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(generated_message_reflection.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(generated_message_util.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(generated_message_util.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(coded_stream.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(coded_stream.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(strtod.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(strtod.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(tokenizer.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(tokenizer.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(zero_copy_stream.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(zero_copy_stream.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(zero_copy_stream_impl.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(zero_copy_stream_impl.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(zero_copy_stream_impl_lite.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(zero_copy_stream_impl_lite.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(message.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(message.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(message_lite.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(message_lite.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(reflection_ops.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(reflection_ops.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(repeated_field.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(repeated_field.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(atomicops_internals_x86_msvc.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(atomicops_internals_x86_msvc.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(common.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(common.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(once.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(once.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(stringprintf.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(stringprintf.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(structurally_valid.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(structurally_valid.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(strutil.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(strutil.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(substitute.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(substitute.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(text_format.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(text_format.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(unknown_field_set.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(unknown_field_set.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(wire_format.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(wire_format.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>libprotobuf.lib(wire_format_lite.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“libprotobuf.lib(wire_format_lite.obj)”或在“E:\github\windows-caffe-faster-rcnn\Build\x64\Release\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+         test_frcnn.vcxproj -> E:\github\windows-caffe-faster-rcnn\windows\test_frcnn\..\..\Build\x64\Release\test_frcnn.exe
+     1>已完成生成项目“E:\github\windows-caffe-faster-rcnn\windows\test_frcnn\test_frcnn.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:19.10

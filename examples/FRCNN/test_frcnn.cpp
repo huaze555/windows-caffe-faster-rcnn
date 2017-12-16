@@ -96,6 +96,7 @@ inline std::string INT(float x) { char A[100]; sprintf_s(A, "%.1f", x); return s
 inline std::string FloatToString(float x) { char A[100]; sprintf_s(A, "%.4f", x); return std::string(A); };
 
 int main(int argc, char** argv){
+
 	// Print output to stderr (while still logging).
 	FLAGS_alsologtostderr = 1;
 	// Set version
@@ -143,7 +144,7 @@ int main(int argc, char** argv){
 	const int max_per_image = FLAGS_max_per_image;
 
 	//API::Set_Config(default_config_file);
-	API::Detector detector(proto_file, model_file, default_config_file, true, false);
+	API::Detector detector(proto_file, model_file, default_config_file, gpu_id >= 0, false);
 
 	LOG(INFO) << "image  list    : " << image_list;
 	LOG(INFO) << "output file    : " << out_file;
