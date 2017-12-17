@@ -1,5 +1,5 @@
 {"scales": "600",
- "max_size": "800",
+ "max_size": "1000",
  "batch_size": "128",
 
  "fg_fraction": "0.25",
@@ -32,7 +32,7 @@
 
 
  "test_scales": "600",
- "test_max_size": "800",
+ "test_max_size": "1000",
  "test_nms": "0.3",
  "test_bbox_reg": "1",
  "test_rpn_nms_thresh": "0.7",
