@@ -4,10 +4,10 @@
 
 ## Introduction
 The windows C ++ version of faster-rcnn is based on two versions:  
-### 一: [Microsoft's windows-caffe](https://github.com/Microsoft/caffe) 
-    This version is Microsoft's windows caffe version    
-### 二: [D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev) 
-    This is the D-X-Y's Linux c ++ version of faster-rcnn
+### 一: [Microsoft's windows-caffe](https://github.com/Microsoft/caffe)  
+This version is Microsoft's windows caffe version    
+### 二: [D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev)  
+This is the D-X-Y's Linux c ++ version of faster-rcnn
     
 ## Features
 After combining the above two, this is the C ++ version faster-rcnn base on windows, no python, support training and testing.   Set the parameters the same as py version, it takes about 180ms to test a image, under the NVIDIA GTX1060 , using the VGG16 model. 
