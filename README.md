@@ -1,6 +1,6 @@
 ![image](https://github.com/huaze555/windows-caffe-faster-rcnn/raw/master/demo_image/1.jpg)  
 
-### This version is for you if you have to use C++ version faster-rcnn in the windows environment because of your project.
+### This version is for you if you have to use C++ version faster-rcnn in the windows environment because the project needs.
 
 ## Introduction
 The windows C ++ version of faster-rcnn is based on two versions:  
