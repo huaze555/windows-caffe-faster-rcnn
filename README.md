@@ -10,12 +10,12 @@ This version is Microsoft's windows caffe version    
 This is the D-X-Y's Linux c ++ version of faster-rcnn
     
 ## Features
-After combining the above two, this is the C ++ version faster-rcnn base on windows, no python, support training and testing.   Set the parameters the same as py version, it takes about 180ms to test a image, under the NVIDIA GTX1060 , using the VGG16 model. 
+- After combining the above two, this is the C ++ version faster-rcnn base on windows, no python, support training and testing. - It takes about 180ms to test a image, under the NVIDIA GTX1060 , using the VGG16 model. 
 
 ## Compile（x64 release）
-Same as [Microsoft Caffe](https://github.com/Microsoft/caffe), or refer to [Blog](http://www.cnblogs.com/love6tao/p/5706830.html)  
-Here for convenience, I have put the cudnn files under the project, the cuda folder under the main directory.  
-If you want to configure cudnn, remember write the right cuda folder path in the "cuDnnPath" in the ".\Windows\CommonSettings.props" .
+- Same as [Microsoft Caffe](https://github.com/Microsoft/caffe), or refer to [Blog](http://www.cnblogs.com/love6tao/p/5706830.html)  
+- Here for convenience, I have put the cudnn files under the project, the cuda folder under the main directory.  
+- If you want to configure cudnn, remember write the right cuda folder path in the "cuDnnPath" in the ".\Windows\CommonSettings.props" .
 
 ## Train model
 - The steps to train the model are exactly the same as [D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev).  
