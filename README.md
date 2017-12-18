@@ -18,17 +18,17 @@ Here for convenience, I have put the cudnn files under the project, the cuda fol
 If you want to configure cudnn, remember write the right cuda folder path in the "cuDnnPath" in the ".\Windows\CommonSettings.props" .
 
 ## Train model
-The steps to train the model are exactly the same as [D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev).  
-After comparing, I found that this version of training is a little slower than the [python version](https://github.com/rbgirshick/py-faster-rcnn), so training model under python version if it is convenient.   
-You can read the script "caffe-master\examples\FRCNN\vgg16\train_frcnn.bat" for detail.
+- The steps to train the model are exactly the same as [D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev).  
+- After comparing, I found that this version of training is a little slower than the [python version](https://github.com/rbgirshick/py-faster-rcnn), so training model under python version if it is convenient.   
+- You can read the script "caffe-master\examples\FRCNN\vgg16\train_frcnn.bat" for detail.
 
 ## Test the model, calculate mAP and Recall
 Read the script "caffe-master\examples\FRCNN\vgg16\test_frcnn.bat" for detail.
 
 ## Configure to VS2013
-After compiling, all dependencies generated with faster-rcnn are under "caffe-master\Build\x64\Release\".  
-Third-party dependencies, such as OpenCV, Glog, protobuf, etc. are in the "NugetPackages".  
-Just as VS2013 configures OpenCV, configure faster-rcnn as long as the include-files for faster-rcnn and third-party libraries are placed into the VC ++ directory of VS2013, the lib files are placed into the library directory, and linker-> input-> additional dependencies, input:
+- After compiling, all dependencies generated with faster-rcnn are under "caffe-master\Build\x64\Release\".  
+- Third-party dependencies, such as OpenCV, Glog, protobuf, etc. are in the "NugetPackages".  
+- Just as VS2013 configures OpenCV, configure faster-rcnn as long as the include-files for faster-rcnn and third-party libraries are placed into the VC ++ directory of VS2013, the lib files are placed into the library directory, and linker-> input-> additional dependencies, input:
 
 libboost_date_time-vc120-mt-1_59.lib  
 libboost_filesystem-vc120-mt-1_59.lib  
@@ -57,9 +57,9 @@ cudart_static.lib
 curand.lib  
 kernel32.lib  
 
-Refer to the blog: http://blog.csdn.net/auto1993/article/details/70198435 for detail.  
-Because the third-party libraries are configured more trouble, for convenience, I packaged the NugetPackages files in the third-party library on [Baidu network disk](https://pan.baidu.com/s/1gfjc3n1), the password : eotf  
-There are three folders: bin, include, lib, respectively, corresponding to the executable file, header files, library files.
+- Refer to the blog: http://blog.csdn.net/auto1993/article/details/70198435 for detail.  
+- Because the third-party libraries are configured more trouble, for convenience, I packaged the NugetPackages files in the third-party library on [Baidu network disk](https://pan.baidu.com/s/1gfjc3n1), the password : eotf  
+- There are three folders: bin, include, lib, respectively, corresponding to the executable file, header files, library files.
 
 ## Test images
 After VS2013 configuration successful, you can write code in VS2013 to test the pictures.
@@ -90,13 +90,13 @@ int main(){
 }
 
 ## Register.h、VGG16.prototxt、VGG16.caffemodel、config_file.json files
-Need to add Register.h to your code, otherwise it will complain that no registration related layer, I had put this file in the main project directory  
-"VGG16.prototxt" -- a network description file  under path "caffe-master\models\FRCNN\vgg16"   
-"VGG16.caffemodel" -- trained model file  
-"config_file.json" -- training and testing need to use the configuration file, it involves the number of target categories, NMS threshold, etc. under "caffe-master\examples\FRCNN\config\" 
+- Need to add Register.h to your code, otherwise it will complain that no registration related layer, I had put this file in the main project directory.  
+- "VGG16.prototxt" -- a network description file  under path "caffe-master\models\FRCNN\vgg16"   
+- "VGG16.caffemodel" -- trained model file  
+- "config_file.json" -- training and testing need to use the configuration file, it involves the number of target categories, NMS threshold, etc. under "caffe-master\examples\FRCNN\config\" 
 
 
 ## others
-My csdn blog address: http://blog.csdn.net/zxj942405301/article/details/78602671  
-If this version is helpful to you, give me a star, thank you ~
+- My csdn blog address: http://blog.csdn.net/zxj942405301/article/details/78602671  
+- If this version is helpful to you, give me a star, thank you ~
 
