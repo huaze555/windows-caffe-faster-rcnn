@@ -13,12 +13,12 @@ The windows C ++ version of faster-rcnn is based on two versions:  
 After combining the above two, this is the C ++ version faster-rcnn base on windows, no python, support training and testing.   Set the parameters the same as py version, it takes about 180ms to test a image, under the NVIDIA GTX1060 , using the VGG16 model. 
 
 ## Compile（x64 release）
-Same as [Microsoft Caffe](https://github.com/Microsoft/caffe), or refer to [Blog](http://www.cnblogs.com/love6tao/p/5706830.html)  
+Same as [Microsoft Caffe](https://github.com/Microsoft/caffe), or refer to [Blog](http://www.cnblogs.com/love6tao/p/5706830.html)  
 Here for convenience, I have put the cudnn files under the project, the cuda folder under the main directory. 
 If you want to configure cudnn, remember write the right cuda folder path in the "cuDnnPath" in the ".\Windows\CommonSettings.props" .
 
 ## Train model
-The steps to train the model are exactly the same as [D-X-Y's caffe-faster-rcnn version] (https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev).  
+The steps to train the model are exactly the same as [D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev).  
 After comparing, I found that this version of training is a little slower than the [python version](https://github.com/rbgirshick/py-faster-rcnn), so training model under python version if it is convenient. 
 You can read the script "caffe-master\examples\FRCNN\vgg16\train_frcnn.bat" for detail.
 
@@ -73,17 +73,17 @@ using namespace std;
 using namespace cv;  
 using namespace caffe::Frcnn;  
 int main(){ 
-	Mat frame = imread("1.jpg);  //image  
-	//Initiaze the detector, the four parameters were:
-	//1、net file 
+	Mat frame = imread("1.jpg);  //image  
+	//Initiaze the detector, the four parameters were:  
+	//1、net file   
 	//2、trained model file  
-	//3、config file
-	//4、Whether to open the GPU model，defaule true 
-      	FRCNN_API::Detector detect("VGG16.prototxt", "VGG16.caffemodel", "config_file.json",true); 		 
-	vector<BBox<float> > boxes;  //detect results 
-	detect.predict(frame, boxes);    //
-	for (int i = 0; i < boxes.size(); i++)   //draw rects
-	     cv::rectangle(frame, cv::Point(boxes[i][0], boxes[i][1]), cv::Point(boxes[i][2], boxes[i][3]), Scalar(0, 0, 255)); 
+	//3、config file  
+	//4、Whether to open the GPU model，defaule true  
+	FRCNN_API::Detector detect("VGG16.prototxt", "VGG16.caffemodel", "config_file.json",true);  
+	vector<BBox<float> > boxes;  //detect results  
+	detect.predict(frame, boxes);    //  
+	for (int i = 0; i < boxes.size(); i++)   //draw rects  
+	cv::rectangle(frame, cv::Point(boxes[i][0], boxes[i][1]), cv::Point(boxes[i][2], boxes[i][3]), Scalar(0, 0, 255)); 
 	imshow("", frame);  
         waitKey(1);  
 	return 0;  
