@@ -73,8 +73,8 @@ The detector was defined in  file caffe-master\include\caffe\api\FRCNN\frcnn_api
 using namespace std;  
 using namespace cv;  
 using namespace caffe::Frcnn;  
-int main(){ 
-	Mat frame = imread("1.jpg);  //image  
+int main(){    
+        Mat frame = imread("1.jpg);  //image  
 	//Initiaze the detector, the four parameters were:  
 	//1、net file   
 	//2、trained model file  
