@@ -10,7 +10,8 @@ This version is Microsoft's windows caffe version    
 This is the D-X-Y's Linux c ++ version of faster-rcnn
     
 ## Features
-- After combining the above two, this is the C ++ version faster-rcnn base on windows, no python, support training and testing. - It takes about 180ms to test a image, under the NVIDIA GTX1060 , using the VGG16 model. 
+- After combining the above two, this is the C ++ version faster-rcnn base on windows, no python, support training and testing.  
+- It takes about 180ms to test a image, under the NVIDIA GTX1060 , using the VGG16 model. 
 
 ## Compile（x64 release）
 - Same as [Microsoft Caffe](https://github.com/Microsoft/caffe), or refer to [Blog](http://www.cnblogs.com/love6tao/p/5706830.html)  
