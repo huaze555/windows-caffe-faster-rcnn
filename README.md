@@ -1,35 +1,34 @@
 ![image](https://github.com/huaze555/windows-caffe-faster-rcnn/raw/master/demo_image/1.jpg)  
 
-### 如果由于工程需要使用c++的faster-rcnn，同时需要在windows环境下，那么这个版本适合你。  
+### This version is for you if you have to use C++ faster-rcnn because of your project need at the same time in the windows environment.   
 
-## 介绍
-该windows下的c++版faster-rcnn是建立在两个版本基础之上的：  
+## Introduction
+The windows C ++ version of faster-rcnn is based on two versions:  
 ### 一: [Microsoft's windows-caffe](https://github.com/Microsoft/caffe) 
-    这个版本是微软的windows下caffe版本    
+    This version is Microsoft's windows caffe version    
 ### 二: [D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev) 
-    这个是D-X-Y大神linux下c++版faster-rcnn
+    This is the D-X-Y's Linux c ++ version of faster-rcnn
     
-## 该版本特性
-结合以上两个后，这是在windows下的c++版faster-rcnn，无python，支持训练和测试。   
-设置和py版相同的参数，在NVIDIA GTX1060显卡，用VGG16模型测试一张图片大约180ms。
+## Features
+After combining the above two, this is the C ++ version faster-rcnn base on windows, no python, support training and testing.   Set the parameters the same as py version, it takes about 180ms to test a image, under the NVIDIA GTX1060 , using the VGG16 model. 
 
-## 编译（x64 release模式）
-跟配置[微软版caffe](https://github.com/Microsoft/caffe)一模一样，或者参考[博客](http://www.cnblogs.com/love6tao/p/5706830.html)  
-这里为了方便，我已经把cudnn的文件放在工程里了，就是主目录下的cuda文件夹  
-如果需要配置cudnn的话，记得在“.\windows\CommonSettings.props”中“CuDnnPath”的配置好cuda文件夹的路径
+## Compile（x64 release）
+Same as [Microsoft Caffe](https://github.com/Microsoft/caffe), or refer to [Blog](http://www.cnblogs.com/love6tao/p/5706830.html)  
+Here for convenience, I have put the cudnn files under the project, the cuda folder under the main directory. 
+If you want to configure cudnn, remember write the right cuda folder path in the "cuDnnPath" in the ".\Windows\CommonSettings.props" .
 
-## 训练模型
-具体训练模型的步骤，跟[D-X-Y's caffe-faster-rcnn version](https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev)是一模一样的  
-但经过比较后，发现这个版本训练的速度比python版[py-faster-rcnn](https://github.com/rbgirshick/py-faster-rcnn)要慢一点点，所以方便的话，还是直接在py版下训练模型。  
-具体可参考脚本 "caffe-master\examples\FRCNN\vgg16\train_frcnn.bat"
+## Train model
+The steps to train the model are exactly the same as [D-X-Y's caffe-faster-rcnn version] (https://github.com/D-X-Y/caffe-faster-rcnn/tree/dev).  
+After comparing, I found that this version of training is a little slower than the [python version](https://github.com/rbgirshick/py-faster-rcnn), so training model under python version if it is convenient. 
+You can read the script "caffe-master\examples\FRCNN\vgg16\train_frcnn.bat" for detail.
 
-## 测试模型，计算mAP和Recall
-参考脚本 "caffe-master\examples\FRCNN\vgg16\test_frcnn.bat"
+## Test the model, calculate mAP and Recall
+Read the script "caffe-master\examples\FRCNN\vgg16\test_frcnn.bat" for detail.
 
-## 配置到VS2013
-编译完成后，生成的所有跟faster-rcnn的依赖项都在"caffe-master\Build\x64\Release\"下  
-而第三方依赖库，比如OpenCV、Glog、protobuf等都在和caffe-master同目录下的"NugetPackages\"下  
-就像VS2013配置OpenCV一样，配置faster-rcnn只要把faster-rcnn和第三方库的include文件放置到VS2013的VC++目录，lib文件放到库目录，然后链接器->输入->附加依赖项，填上
+## Configure to VS2013
+After compiling, all dependencies generated with faster-rcnn are under "caffe-master\Build\x64\Release\"  
+Third-party dependencies, such as OpenCV, Glog, protobuf, etc. are in the "NugetPackages" 
+Just as VS2013 configures OpenCV, configure faster-rcnn as long as the include-files for faster-rcnn and third-party libraries are placed into the VC ++ directory of VS2013, the lib files are placed into the library directory, and linker-> input-> additional dependencies, input
 
 libboost_date_time-vc120-mt-1_59.lib  
 libboost_filesystem-vc120-mt-1_59.lib  
@@ -58,47 +57,46 @@ cudart_static.lib
 curand.lib  
 kernel32.lib  
 
-详细可参考博客: http://blog.csdn.net/auto1993/article/details/70198435  
+Refer to the blog: http://blog.csdn.net/auto1993/article/details/70198435 for detail
+Because the third-party libraries are configured more trouble, for convenience, I packaged the NugetPackages files in the third-party library on [Baidu network disk] (https://pan.baidu.com/s/1gfjc3n1), the password : eotf
+There are three folders: bin, include, lib, respectively, corresponding to the executable file, header files, library files
 
-因为第三方库比较多配置起来麻烦，为了方便，我将NugetPackages文件中第三方库文件打包好了放在[百度网盘](https://pan.baidu.com/s/1gfjc3n1)上，密码: eotf   
-共分为三个文件夹： bin、include、lib，分别对应可执行文件，头文件，库文件
-
-## 对图片进行测试
-VS2013配置成功后，就可以在VS2013中编写代码，对图片进行测试了。  
-检测类在文件caffe-master\include\caffe\api\FRCNN\frcnn_api.hpp 定义，接口为：  
+## Test images
+After VS2013 configuration successful, you can write code in VS2013 to test the pictures.
+The detector was defined in  file caffe-master\include\caffe\api\FRCNN\frcnn_api.hpp:  
   
   
-#include <caffe\api\FRCNN\frcnn_api.hpp>  //目标检测头文件  
+#include <caffe\api\FRCNN\frcnn_api.hpp>  //Detect head file  
 #include <opencv2\opencv.hpp>   
-#include "Register.h"           //这个文件不能少，用于注册相关caffe层  
+#include "Register.h"           //This file is necessary used to register the relevant caffe layer 
 using namespace std;  
 using namespace cv;  
 using namespace caffe::Frcnn;  
 int main(){ 
-	Mat frame = imread("1.jpg);  //图片  
-	//初始化目标检测器，构造函数中，四个参数分别为  
-	//1、网络配置文件  
-	//2、训练好的检测model  
-	//3、目标检测参数文件，比如目标检测阈值，NMS阈值  
-	//4、是否开启GPU模型，默认为true，表示开启GPU，false表示用CPU  
+	Mat frame = imread("1.jpg);  //image  
+	//Initiaze the detector, the four parameters were:
+	//1、net file 
+	//2、trained model file  
+	//3、config file
+	//4、Whether to open the GPU model，defaule true 
       	FRCNN_API::Detector detect("VGG16.prototxt", "VGG16.caffemodel", "config_file.json",true); 		 
-	vector<BBox<float> > boxes;  //检测结果保存在这  
-	detect.predict(frame, boxes);    //对图片帧frame进行目标检测，保存的结果框，存在boxes中  
-	for (int i = 0; i < boxes.size(); i++)   //画框  
+	vector<BBox<float> > boxes;  //detect results 
+	detect.predict(frame, boxes);    //
+	for (int i = 0; i < boxes.size(); i++)   //draw rects
 	     cv::rectangle(frame, cv::Point(boxes[i][0], boxes[i][1]), cv::Point(boxes[i][2], boxes[i][3]), Scalar(0, 0, 255)); 
 	imshow("", frame);  
         waitKey(1);  
 	return 0;  
 }
 
-## Register.h、VGG16.prototxt、VGG16.caffemodel、config_file.json文件
-需要添加Register.h这个头文件，否则会报错说没有注册相关的layer，该文件我放在了工程主目录下  
-VGG16.prototxt 文件是网络描述文件  在 caffe-master\models\FRCNN\vgg16\ 下  
-VGG16.caffemodel文件是训练好的model
-config_file.json是训练以及测试时需要用到的配置文件，有涉及到目标类别数，NMS阈值等等，在caffe-master\examples\FRCNN\config\下  
+## Register.h、VGG16.prototxt、VGG16.caffemodel、config_file.json files
+Need to add Register.h this header file, otherwise it will complain that no registration related layer, I had put this file in the main project directory
+"VGG16.prototxt" -- a network description file  under path "caffe-master\models\FRCNN\vgg16"   
+"VGG16.caffemodel" -- trained model file
+"config_file.json" -- training and testing need to use the configuration file, it involves the number of target categories, NMS threshold, etc. under "caffe-master\examples\FRCNN\config\" 
 
 
-## 其它
-我的csdn博客地址：http://blog.csdn.net/zxj942405301/article/details/78602671  
-如果该版本对你有帮助，希望你给我个星星，谢谢~
+## other
+My csdn blog address: http://blog.csdn.net/zxj942405301/article/details/78602671  
+If this version is helpful to you, give me a star, thank you ~
 
