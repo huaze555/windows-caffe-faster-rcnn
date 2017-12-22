@@ -16,8 +16,9 @@
 #include "caffe/FRCNN/util/frcnn_param.hpp"
 #include "caffe/FRCNN/util/frcnn_helper.hpp"
 
-namespace FRCNN_API{
 
+
+namespace FRCNN_API{
 	using std::vector;
 	using caffe::Blob;
 	using caffe::Net;
@@ -32,6 +33,7 @@ namespace FRCNN_API{
 			bool useGPU = true, bool ignoreLog = true);
 		//对一张图片进行检测
 		void predict(const cv::Mat& img_in, vector<BBox<float> >& results);
+
 	private:
 		void Set_Model(const std::string &proto_file, const std::string &model_file);
 		void predict_original(const cv::Mat &img_in, vector<BBox<float> > &results);
