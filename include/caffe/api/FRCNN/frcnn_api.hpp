@@ -39,9 +39,9 @@ namespace FRCNN_API{
 		void predict_original(const cv::Mat &img_in, vector<BBox<float> > &results);
 		void predict_iterative(const cv::Mat &img_in, vector<BBox<float> > &results);
 
-		void preprocess(const cv::Mat &img_in, const int blob_idx);
-		void preprocess(const vector<float> &data, const int blob_idx);
-		vector<boost::shared_ptr<Blob<float> > > predict(const vector<std::string> blob_names);
+		void preprocess(const cv::Mat &img_in, const int blob_idx); //将图片img_in 填充进网络的输入层的第blob_idx个blob
+		void preprocess(const vector<float> &data, const int blob_idx);//将图片的结构信息(高，宽，缩放比例)存入网络的输入层的第blob_idx的blob
+		vector<boost::shared_ptr<Blob<float> > > predict(const vector<std::string> blob_names); //网络进行前向传播，将blob_names中的每个blob返回
 		boost::shared_ptr<Net<float> > net_;
 		float mean_[3];
 		int roi_pool_layer;

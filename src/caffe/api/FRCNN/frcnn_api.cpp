@@ -17,6 +17,8 @@ namespace FRCNN_API{
 		API::Set_Config(config_file);
 		Set_Model(proto_file, model_file);
 	}
+
+	//将图片img_in 填充进网络的输入层的第blob_idx个blob
 	void Detector::preprocess(const cv::Mat &img_in, const int blob_idx) {
 		const vector<Blob<float> *> &input_blobs = net_->input_blobs();
 		CHECK(img_in.isContinuous()) << "Warning : cv::Mat img_out is not Continuous !";
@@ -34,7 +36,7 @@ namespace FRCNN_API{
 				reinterpret_cast<float*>(img_in.data)[i * 3 + 2];// mean_[2];
 		}
 	}
-
+	//将图片的结构信息(高，宽，缩放比例)存入网络的输入层的第blob_idx的blob
 	void Detector::preprocess(const vector<float> &data, const int blob_idx) {
 		const vector<Blob<float> *> &input_blobs = net_->input_blobs();
 		input_blobs[blob_idx]->Reshape(1, data.size(), 1, 1);
@@ -62,7 +64,7 @@ namespace FRCNN_API{
 		DLOG(INFO) << "SET MODEL DONE, ROI POOLING LAYER : " << layer_names[this->roi_pool_layer];
 		caffe::Frcnn::FrcnnParam::print_param();
 	}
-
+	//网络进行前向传播，将blob_names中的每个blob返回
 	vector<boost::shared_ptr<Blob<float> > > Detector::predict(const vector<std::string> blob_names) {
 		//DLOG(ERROR) << "FORWARD BEGIN";
 		float loss;
@@ -85,6 +87,7 @@ namespace FRCNN_API{
 		}
 	}
 
+	//假设图片时430*800大小
 	void Detector::predict_original(const cv::Mat &img_in, std::vector<caffe::Frcnn::BBox<float> > &results) {
 
 		CHECK(FrcnnParam::test_scales.size() == 1) << "Only single-image batch implemented";
@@ -95,8 +98,8 @@ namespace FRCNN_API{
 		const int height = img_in.rows;
 		const int width = img_in.cols;
 		DLOG(INFO) << "height: " << height << " width: " << width;
-		img_in.convertTo(img, CV_32FC3);
-		for (int r = 0; r < img.rows; ++r) {
+		img_in.convertTo(img, CV_32FC3);    //转为float32位
+		for (int r = 0; r < img.rows; ++r) {    //减均值
 			for (int c = 0; c < img.cols; ++c) {
 				int offset = (r * img.cols + c) * 3;
 				reinterpret_cast<float *>(img.data)[offset + 0] -= this->mean_[0]; // B
@@ -104,7 +107,7 @@ namespace FRCNN_API{
 				reinterpret_cast<float *>(img.data)[offset + 2] -= this->mean_[2]; // R
 			}
 		}
-		cv::resize(img, img, cv::Size(), scale_factor, scale_factor);
+		cv::resize(img, img, cv::Size(), scale_factor, scale_factor);  //变成539*1000大小
 
 		std::vector<float> im_info(3);
 		im_info[0] = img.rows;
@@ -112,7 +115,7 @@ namespace FRCNN_API{
 		im_info[2] = scale_factor;
 
 		//DLOG(ERROR) << "im_info : " << im_info[0] << ", " << im_info[1] << ", " << im_info[2];
-		this->preprocess(img, 0);
+		this->preprocess(img, 0);    //将图片(539*1000) 送入到网络的输入层input_blobs
 		this->preprocess(im_info, 1);
 
 		vector<std::string> blob_names(3);
@@ -120,13 +123,14 @@ namespace FRCNN_API{
 		blob_names[1] = "cls_prob";
 		blob_names[2] = "bbox_pred";
 
-		vector<boost::shared_ptr<Blob<float> > > output = this->predict(blob_names);
-		boost::shared_ptr<Blob<float> > rois(output[0]);
-		boost::shared_ptr<Blob<float> > cls_prob(output[1]);
-		boost::shared_ptr<Blob<float> > bbox_pred(output[2]);
+		//网络进行前向传播，将rois、cls_prob、bbox_pred三个blob返回
+		vector<boost::shared_ptr<Blob<float> > > output = this->predict(blob_names); 
+		boost::shared_ptr<Blob<float> > rois(output[0]);     // 300*5*1*1
+		boost::shared_ptr<Blob<float> > cls_prob(output[1]);  // 300*2
+		boost::shared_ptr<Blob<float> > bbox_pred(output[2]);  // 300*8
 
-		const int box_num = bbox_pred->num();
-		const int cls_num = cls_prob->channels();
+		const int box_num = bbox_pred->num();    //300个roi
+		const int cls_num = cls_prob->channels();   //2类
 		CHECK_EQ(cls_num, caffe::Frcnn::FrcnnParam::n_classes);
 		results.clear();
 
@@ -202,8 +206,8 @@ namespace FRCNN_API{
 		im_info[2] = scale_factor;
 
 		DLOG(INFO) << "im_info : " << im_info[0] << ", " << im_info[1] << ", " << im_info[2];
-		this->preprocess(img, 0);
-		this->preprocess(im_info, 1);
+		this->preprocess(img, 0);   //将图片img 填充进网络的输入层的第0个blob
+		this->preprocess(im_info, 1);  //将图片的结构信息(高，宽，缩放比例)存入网络的输入层的第1个的blob
 
 		vector<std::string> blob_names(3);
 		blob_names[0] = "rois";
