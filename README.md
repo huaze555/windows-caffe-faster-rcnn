@@ -75,11 +75,12 @@ using namespace cv;
 using namespace caffe::Frcnn;  
 int main(){    
         Mat frame = imread("1.jpg);  //image  
-	//Initiaze the detector, the four parameters were:  
-	//1、net file   
-	//2、trained model file  
-	//3、config file  
-	//4、Whether to open the GPU model，defaule true  
+	/* Initiaze the detector, the four parameters were:  
+	1. network file   
+	2. trained model file  
+	3. config file  
+	4. whether to open the GPU mode, defaule true  
+	*/
 	FRCNN_API::Detector detect("VGG16.prototxt", "VGG16.caffemodel", "config_file.json",true);  
 	vector<BBox<float> > boxes;  //detect results saved here 
 	detect.predict(frame, boxes);    // forward 
