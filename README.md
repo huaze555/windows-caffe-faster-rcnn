@@ -65,7 +65,7 @@ kernel32.lib
 ## Test images
 After VS2013 configuration successful, you can write code in VS2013 to test the pictures.
 The detector was defined in  file caffe-master\include\caffe\api\FRCNN\frcnn_api.hpp:  
-  
+
 ```c++
 #include <caffe\api\FRCNN\frcnn_api.hpp>  //Detect head file  
 #include <opencv2\opencv.hpp>   
@@ -74,19 +74,19 @@ using namespace std;
 using namespace cv;  
 using namespace caffe::Frcnn;  
 int main(){    
-        	Mat frame = imread("1.jpg);  //image  
+        Mat frame = imread("1.jpg);  //image  
 	//Initiaze the detector, the four parameters were:  
 	//1、net file   
 	//2、trained model file  
 	//3、config file  
 	//4、Whether to open the GPU model，defaule true  
 	FRCNN_API::Detector detect("VGG16.prototxt", "VGG16.caffemodel", "config_file.json",true);  
-	vector<BBox<float> > boxes;  //detect results  
+	vector<BBox<float> > boxes;  //detect results saved here 
 	detect.predict(frame, boxes);    // forward 
 	for (int i = 0; i < boxes.size(); i++)   //draw rects  
-	cv::rectangle(frame, cv::Point(boxes[i][0], boxes[i][1]), cv::Point(boxes[i][2], boxes[i][3]), Scalar(0, 0, 255)); 
-	imshow("", frame);  
-        waitKey(1);  
+	     rectangle(frame, cv::Point(boxes[i][0], boxes[i][1]), cv::Point(boxes[i][2], boxes[i][3]), Scalar(0, 0, 255)); 
+	imshow("demo", frame);  
+        waitKey(0);  
 	return 0;  
 }
 ```  
