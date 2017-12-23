@@ -66,7 +66,7 @@ kernel32.lib
 After VS2013 configuration successful, you can write code in VS2013 to test the pictures.
 The detector was defined in  file caffe-master\include\caffe\api\FRCNN\frcnn_api.hpp:  
   
-  
+```c++
 #include <caffe\api\FRCNN\frcnn_api.hpp>  //Detect head file  
 #include <opencv2\opencv.hpp>   
 #include "Register.h"           //This file is necessary used to register the relevant caffe layer 
@@ -89,6 +89,7 @@ int main(){
         waitKey(1);  
 	return 0;  
 }
+```  
 
 ## Register.h、VGG16.prototxt、VGG16.caffemodel、config_file.json files
 - Need to add Register.h to your code, otherwise it will complain that no registration related layer, I had put this file in the main project directory.  
