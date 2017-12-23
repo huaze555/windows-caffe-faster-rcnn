@@ -82,7 +82,7 @@ int main(){
 	//4、Whether to open the GPU model，defaule true  
 	FRCNN_API::Detector detect("VGG16.prototxt", "VGG16.caffemodel", "config_file.json",true);  
 	vector<BBox<float> > boxes;  //detect results  
-	detect.predict(frame, boxes);    //  
+	detect.predict(frame, boxes);    // forward 
 	for (int i = 0; i < boxes.size(); i++)   //draw rects  
 	cv::rectangle(frame, cv::Point(boxes[i][0], boxes[i][1]), cv::Point(boxes[i][2], boxes[i][3]), Scalar(0, 0, 255)); 
 	imshow("", frame);  
