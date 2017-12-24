@@ -69,7 +69,6 @@ The detector was defined in  file caffe-master\include\caffe\api\FRCNN\frcnn_api
 
 ```c++
 #include <caffe\api\FRCNN\frcnn_api.hpp>  //Detect head file  
-#include <opencv2\opencv.hpp>   
 #include "Register.h"           //This file is necessary used to register the relevant caffe layer 
 using namespace std;  
 using namespace cv;  
