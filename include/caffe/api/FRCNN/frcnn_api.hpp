@@ -32,7 +32,7 @@ namespace FRCNN_API{
 		Detector(const std::string &proto_file, const std::string &model_file, const std::string& config_file,
 			bool useGPU = true, bool ignoreLog = true);
 		//对一张图片进行检测
-		void predict(const cv::Mat& img_in, vector<BBox<float> >& results);
+		vector<BBox<float> > predict(const cv::Mat& img_in);
 
 	private:
 		void Set_Model(const std::string &proto_file, const std::string &model_file);

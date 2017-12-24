@@ -157,8 +157,7 @@ int main(int argc, char** argv){
 	while (data_load.load_WithDiff(infile)) {
 		std::string image = data_load.GetImagePath("");
 		cv::Mat cv_image = cv::imread(image_root + image);
-		std::vector<caffe::Frcnn::BBox<float> > results;
-		detector.predict(cv_image, results);
+		std::vector<caffe::Frcnn::BBox<float> > results = detector.predict(cv_image);
 		otfile << "# " << data_load.GetImageIndex() << std::endl;
 		otfile << image << std::endl;
 

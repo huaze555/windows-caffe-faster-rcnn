@@ -76,15 +76,16 @@ namespace FRCNN_API{
 		//DLOG(ERROR) << "FORWARD END, Loss : " << loss;
 		return output;
 	}
-
-	void Detector::predict(const cv::Mat &img_in, std::vector<caffe::Frcnn::BBox<float> > &results) {
+	vector<BBox<float> > Detector::predict(const cv::Mat& img_in){
 		CHECK(FrcnnParam::iter_test == -1 || FrcnnParam::iter_test > 1) << "FrcnnParam::iter_test == -1 || FrcnnParam::iter_test > 1";
+		vector<BBox<float> > results;
 		if (FrcnnParam::iter_test == -1) {
 			predict_original(img_in, results);
 		}
 		else {
 			predict_iterative(img_in, results);
 		}
+		return results;
 	}
 
 	//假设图片时430*800大小
