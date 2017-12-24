@@ -84,7 +84,7 @@ int main(){
 	5. whether to ignore print log, default true
 	*/
 	FRCNN_API::Detector detect("VGG16.prototxt", "VGG16.caffemodel", "config_file.json", true, true);  
-	vector<BBox<float> > boxes = detect.predict(frame, boxes);    // forward, detect results saved here 
+	vector<BBox<float> > boxes = detect.predict(frame);    // forward, detect results saved here 
 	for (int i = 0; i < boxes.size(); i++)   //draw rects  
 	     rectangle(frame, cv::Point(boxes[i][0], boxes[i][1]), cv::Point(boxes[i][2], boxes[i][3]), Scalar(0, 0, 255)); 
 	imshow("demo", frame);  
