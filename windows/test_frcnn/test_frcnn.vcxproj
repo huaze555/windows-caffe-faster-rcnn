@@ -61,9 +61,6 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\examples\FRCNN\test_frcnn.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\libcaffe\libcaffe.vcxproj">
       <Project>{a9acef83-7b63-4574-a554-89ce869ea141}</Project>
       <Private>false</Private>
@@ -75,6 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\tools\test_frcnn.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="$(SolutionDir)\CommonSettings.targets" />
