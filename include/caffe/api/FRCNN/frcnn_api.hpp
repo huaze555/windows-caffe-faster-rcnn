@@ -33,7 +33,7 @@ namespace FRCNN_API{
 			bool useGPU = true, bool ignoreLog = true);
 		//对一张图片进行检测
 		vector<BBox<float> > predict(const cv::Mat& img_in);
-
+		void predict(const cv::Mat& img_in, vector<BBox<float> >& boxes);  //重载
 	private:
 		void Set_Model(const std::string &proto_file, const std::string &model_file);
 		void predict_original(const cv::Mat &img_in, vector<BBox<float> > &results);
