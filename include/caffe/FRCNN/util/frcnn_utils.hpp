@@ -141,41 +141,43 @@ public:
 template <typename Dtype>
 class BBox : public Point4f<Dtype> {
 public:
-  Dtype confidence;
-  int id;
+	Dtype confidence;
+	int id;
+	int order;  //add by zxj 2017-12-27
 
-  BBox(Dtype x1 = 0, Dtype y1 = 0, Dtype x2 = 0, Dtype y2 = 0,
-       Dtype confidence = 0, int id = 0)
-      : Point4f<Dtype>(x1, y1, x2, y2), confidence(confidence), id(id) {}
-  BBox(Point4f<Dtype> box, Dtype confidence_ = 0, int id = 0)
-      : Point4f<Dtype>(box), confidence(confidence_), id(id) {}
+	BBox(Dtype x1 = 0, Dtype y1 = 0, Dtype x2 = 0, Dtype y2 = 0,
+		Dtype confidence = 0, int id = 0, int order = -1)
+		: Point4f<Dtype>(x1, y1, x2, y2), confidence(confidence), id(id), order(order) {}
+	BBox(Point4f<Dtype> box, Dtype confidence_ = 0, int id = 0, int order = -1)
+		: Point4f<Dtype>(box), confidence(confidence_), id(id), order(order) {}
 
-  BBox &operator=(const BBox &other) {
-    memcpy(this->Point, other.Point, sizeof(this->Point));
-    confidence = other.confidence;
-    id = other.id;
-    return *this;
-  }
+	BBox &operator=(const BBox &other) {
+		memcpy(this->Point, other.Point, sizeof(this->Point));
+		confidence = other.confidence;
+		id = other.id;
+		order = other.order;
+		return *this;
+	}
 
-  bool operator<(const class BBox &other) const {
-    if (confidence != other.confidence)
-      return confidence > other.confidence;
-    else
-      return id < other.id;
-  }
+	bool operator<(const class BBox &other) const {
+		if (confidence != other.confidence)
+			return confidence > other.confidence;
+		else
+			return id < other.id;
+	}
 
-  inline string to_string() const {
-    char buff[100];
-    _snprintf(buff, sizeof(buff), "cls:%3d -- (%.3f): %.2f %.2f %.2f %.2f", id,
-             confidence, this->Point[0], this->Point[1], this->Point[2], this->Point[3]);
-    return string(buff);
-  }
+	inline string to_string() const {
+		char buff[100];
+		_snprintf(buff, sizeof(buff), "cls:%3d -- (%.3f): %.2f %.2f %.2f %.2f", id,
+			confidence, this->Point[0], this->Point[1], this->Point[2], this->Point[3]);
+		return string(buff);
+	}
 
-  inline string to_short_string() const {
-    char buff[100];
-    _snprintf(buff, sizeof(buff), "cls:%1d -- (%.2f)", id, confidence);
-    return string(buff);
-  }
+	inline string to_short_string() const {
+		char buff[100];
+		_snprintf(buff, sizeof(buff), "cls:%1d -- (%.2f)", id, confidence);
+		return string(buff);
+	}
 };
 
 template <typename Dtype>
