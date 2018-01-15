@@ -113,7 +113,7 @@ namespace caffe {
 		void FrcnnProposalLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype> *> &bottom,
 			const vector<Blob<Dtype> *> &top) {
 			Forward_cpu(bottom, top);
-			return 0;
+			return;
 #if 0
 			DLOG(ERROR) << "========== enter proposal layer";
 			const Dtype *bottom_rpn_score = bottom[0]->gpu_data();  // rpn_cls_prob_reshape
