@@ -112,13 +112,16 @@ namespace caffe {
 		template <typename Dtype>
 		void FrcnnProposalLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype> *> &bottom,
 			const vector<Blob<Dtype> *> &top) {
+			Forward_cpu(bottom, top);
+			return 0;
+#if 0
 			DLOG(ERROR) << "========== enter proposal layer";
-			const Dtype *bottom_rpn_score = bottom[0]->gpu_data();
-			const Dtype *bottom_rpn_bbox = bottom[1]->gpu_data();
+			const Dtype *bottom_rpn_score = bottom[0]->gpu_data();  // rpn_cls_prob_reshape
+			const Dtype *bottom_rpn_bbox = bottom[1]->gpu_data();   // rpn_bbox_pred
 			// bottom data comes from host memory
 			Dtype bottom_im_info[3];
 			CHECK_EQ(bottom[2]->count(), 3);
-			CUDA_CHECK(cudaMemcpy(bottom_im_info, bottom[2]->gpu_data(), sizeof(Dtype)* 3, cudaMemcpyDeviceToHost));
+			CUDA_CHECK(cudaMemcpy(bottom_im_info, bottom[2]->gpu_data(), sizeof(Dtype)* 3, cudaMemcpyDeviceToHost)); // im_info
 
 			const int num = bottom[1]->num();
 			const int channes = bottom[1]->channels();
@@ -257,7 +260,7 @@ namespace caffe {
 			CUDA_CHECK(cudaFree(cumsum_temp_storage_));
 			CUDA_CHECK(cudaFree(selected_indices_));
 			if (bbox_score_ != NULL)  CUDA_CHECK(cudaFree(bbox_score_));
-
+#endif
 		}
 
 		template <typename Dtype>

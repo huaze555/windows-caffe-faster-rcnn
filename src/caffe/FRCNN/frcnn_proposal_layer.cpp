@@ -93,6 +93,9 @@ void FrcnnProposalLayer<Dtype>::Forward_cpu(const vector<Blob<Dtype> *> &bottom,
       for (int k = 0; k < config_n_anchors; k++) {
         Dtype score = bottom_rpn_score[config_n_anchors * height * width +
                                        k * height * width + j * width + i];
+		//首先将置信度低的剔除，极大缩短运行时间
+		if (score < FrcnnParam::test_score_thresh)
+			continue;
         //const int index = i * height * config_n_anchors + j * config_n_anchors + k;
 
         Point4f<Dtype> anchor(
@@ -126,7 +129,7 @@ void FrcnnProposalLayer<Dtype>::Forward_cpu(const vector<Blob<Dtype> *> &bottom,
   DLOG(ERROR) << "========== after clip and remove size < threshold box " << (int)sort_vector.size();
 
   std::sort(sort_vector.begin(), sort_vector.end(), std::greater<sort_pair>());
-  const int n_anchors = std::min((int)sort_vector.size(), rpn_pre_nms_top_n);
+  const int n_anchors = std::min((int)sort_vector.size(), rpn_pre_nms_top_n);  //最多6000个
   sort_vector.erase(sort_vector.begin() + n_anchors, sort_vector.end());
   //anchors.erase(anchors.begin() + n_anchors, anchors.end());
   std::vector<bool> select(n_anchors, true);
@@ -136,18 +139,18 @@ void FrcnnProposalLayer<Dtype>::Forward_cpu(const vector<Blob<Dtype> *> &bottom,
   std::vector<Point4f<Dtype> > box_final;
   std::vector<Dtype> scores_;
   for (int i = 0; i < n_anchors && box_final.size() < rpn_post_nms_top_n; i++) {
-    if (select[i]) {
-      const int cur_i = sort_vector[i].second;
-      for (int j = i + 1; j < n_anchors; j++)
-        if (select[j]) {
-          const int cur_j = sort_vector[j].second;
-          if (get_iou(anchors[cur_i], anchors[cur_j]) > rpn_nms_thresh) {
-            select[j] = false;
-          }
-        }
-      box_final.push_back(anchors[cur_i]);
-      scores_.push_back(sort_vector[i].first);
-    }
+	  if (select[i]) {
+		  const int cur_i = sort_vector[i].second;
+		  for (int j = i + 1; j < n_anchors; j++)
+		  if (select[j]) {
+			  const int cur_j = sort_vector[j].second;
+			  if (get_iou(anchors[cur_i], anchors[cur_j]) > rpn_nms_thresh) {
+				  select[j] = false;
+			  }
+		  }
+		  box_final.push_back(anchors[cur_i]);
+		  scores_.push_back(sort_vector[i].first);
+	  }
   }
 
   DLOG(ERROR) << "rpn number after nms: " <<  box_final.size();
