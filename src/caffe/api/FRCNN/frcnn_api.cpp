@@ -122,8 +122,8 @@ namespace FRCNN_API{
 		vector<boost::shared_ptr<Blob<float> > > output = this->predict(blob_names);
 
 		boost::shared_ptr<Blob<float> > rois(output[0]);     // 300*5*1*1 : 300代表300个rois， 5 代表*, x1, y1, x2, y2
-		boost::shared_ptr<Blob<float> > cls_prob(output[1]);  // 300*21    21个类别，每个类别都有300个roi
-		boost::shared_ptr<Blob<float> > bbox_pred(output[2]);  // 300*84   对于每个类别，都对应4个缩放系数
+		boost::shared_ptr<Blob<float> > cls_prob(output[1]);  // 300*21    300个rois，每个roi对应21个类别的得分置信度
+		boost::shared_ptr<Blob<float> > bbox_pred(output[2]);  // 300*84   300个rois，每个roi对应21个类别的4个缩放系数
 
 		const int box_num = bbox_pred->num();    //300个roi
 		const int cls_num = cls_prob->channels();   //21类
@@ -178,7 +178,6 @@ namespace FRCNN_API{
 
 		CHECK(FrcnnParam::test_scales.size() == 1) << "Only single-image batch implemented";
 		CHECK(FrcnnParam::iter_test >= 1) << "iter_test should greater and queal than 1";
-
 		float scale_factor = caffe::Frcnn::get_scale_factor(img_in.cols, img_in.rows, FrcnnParam::test_scales[0], FrcnnParam::test_max_size);
 
 		cv::Mat img;
