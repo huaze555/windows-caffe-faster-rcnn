@@ -94,7 +94,7 @@ namespace caffe {
 					for (int k = 0; k < config_n_anchors; k++) {
 						Dtype score = bottom_rpn_score[config_n_anchors * height * width +
 							k * height * width + j * width + i];
-						//Ê×ÏÈ½«ÖÃĞÅ¶ÈµÍµÄÌŞ³ı£¬¼«´óËõ¶ÌÔËĞĞÊ±¼ä(½öÔÚ²âÊÔ½×¶ÎĞèÒªÊ×ÏÈÌŞ³ıµÍÖÃĞÅ¶ÈºòÑ¡¿ò)
+						//é¦–å…ˆå°†ç½®ä¿¡åº¦ä½çš„å‰”é™¤ï¼Œæå¤§ç¼©çŸ­è¿è¡Œæ—¶é—´(ä»…åœ¨æµ‹è¯•é˜¶æ®µéœ€è¦é¦–å…ˆå‰”é™¤ä½ç½®ä¿¡åº¦å€™é€‰æ¡†)
 						if (this->phase_ == TEST&&score < FrcnnParam::test_score_thresh)
 							continue;
 						//const int index = i * height * config_n_anchors + j * config_n_anchors + k;
@@ -130,7 +130,7 @@ namespace caffe {
 			DLOG(ERROR) << "========== after clip and remove size < threshold box " << (int)sort_vector.size();
 
 			std::sort(sort_vector.begin(), sort_vector.end(), std::greater<sort_pair>());
-			const int n_anchors = std::min((int)sort_vector.size(), rpn_pre_nms_top_n);  //×î¶à6000¸ö
+			const int n_anchors = std::min((int)sort_vector.size(), rpn_pre_nms_top_n);  //æœ€å¤š6000ä¸ª
 			sort_vector.erase(sort_vector.begin() + n_anchors, sort_vector.end());
 			//anchors.erase(anchors.begin() + n_anchors, anchors.end());
 			std::vector<bool> select(n_anchors, true);
@@ -153,7 +153,11 @@ namespace caffe {
 					scores_.push_back(sort_vector[i].first);
 				}
 			}
-
+                        if (box_final.size() == 0)   //ç¡®ä¿ROIæ•°é‡ä¸ä¸º0!!   add by zxj 2018-7-30
+			{
+				box_final.push_back(Point4f<Dtype>(0, 0, 1, 1));
+				scores_.push_back(0.01);
+			}
 			DLOG(ERROR) << "rpn number after nms: " << box_final.size();
 
 			DLOG(ERROR) << "========== copy to top";
