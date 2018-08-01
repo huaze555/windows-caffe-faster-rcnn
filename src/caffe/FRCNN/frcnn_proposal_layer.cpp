@@ -156,7 +156,7 @@ namespace caffe {
                         if (box_final.size() == 0)   //确保ROI数量不为0!!   add by zxj 2018-7-30
 			{
 				box_final.push_back(Point4f<Dtype>(0, 0, 1, 1));
-				scores_.push_back(0.01);
+				scores_.push_back(0.0001);
 			}
 			DLOG(ERROR) << "rpn number after nms: " << box_final.size();
 
