@@ -1,7 +1,8 @@
 ![image](https://github.com/huaze555/windows-caffe-faster-rcnn/raw/master/demo_image/1.jpg)  
 
-### This version has been deprecated, see [YoloV3-darknet!](https://github.com/AlexeyAB/darknet)  
-  
+### This version has been deprecated, see [YoloV3-darknet!](https://github.com/AlexeyAB/darknet)    
+
+*************************************************************************************************  
 
 ### This version is for you if you have to use C++ version faster-rcnn in the windows environment because the project needs.
 
